@@ -1,0 +1,307 @@
+/* FunPay Market Assistant - Content Styles */
+
+/* Панель расширения */
+#funpay-assistant-panel {
+  position: fixed;
+  top: 80px;
+  right: 20px;
+  width: 320px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  z-index: 10000;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  transition: all 0.3s ease;
+}
+
+.funpay-assistant-panel .fpa-header {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 15px;
+  border-radius: 12px 12px 0 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.funpay-assistant-panel .fpa-header h3 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.fpa-toggle {
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  color: white;
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s;
+}
+
+.fpa-toggle:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.fpa-content {
+  padding: 15px;
+  max-height: 500px;
+  overflow-y: auto;
+}
+
+.fpa-section {
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.fpa-section:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+}
+
+.fpa-section h4 {
+  font-size: 14px;
+  margin: 0 0 12px 0;
+  color: #333;
+  font-weight: 600;
+}
+
+/* Notifications */
+#fpa-notifications {
+  font-size: 13px;
+}
+
+.fpa-status {
+  color: #4CAF50;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.fpa-status::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  background: #4CAF50;
+  border-radius: 50%;
+  display: inline-block;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* Quick Stats */
+#fpa-quick-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.stat-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 12px;
+  background: #f5f5f5;
+  border-radius: 8px;
+  font-size: 13px;
+}
+
+.stat-item span:first-child {
+  color: #666;
+}
+
+.stat-item span:last-child {
+  font-weight: 600;
+  color: #667eea;
+}
+
+/* Market Analysis */
+#fpa-market-analysis {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.fpa-button {
+  padding: 10px 15px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+  width: 100%;
+}
+
+.fpa-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+.fpa-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Analysis Results */
+#analysis-results {
+  font-size: 13px;
+}
+
+.fpa-loading {
+  text-align: center;
+  color: #999;
+  margin: 10px 0;
+}
+
+.fpa-error {
+  text-align: center;
+  color: #ff6b6b;
+  margin: 10px 0;
+}
+
+.analysis-summary {
+  background: #f9f9f9;
+  border-radius: 8px;
+  padding: 12px;
+  margin-bottom: 12px;
+}
+
+.stat-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 0;
+  font-size: 12px;
+}
+
+.stat-row span:first-child {
+  color: #666;
+}
+
+.stat-row .highlight {
+  font-weight: 600;
+  color: #667eea;
+}
+
+.recommendation {
+  background: linear-gradient(135deg, #ffeaa7 0%, #fdcb6e 100%);
+  border-radius: 8px;
+  padding: 12px;
+  margin-bottom: 12px;
+}
+
+.recommendation strong {
+  display: block;
+  margin-bottom: 8px;
+  color: #2d3436;
+  font-size: 13px;
+}
+
+.recommendation p {
+  margin: 4px 0;
+  font-size: 12px;
+  color: #2d3436;
+  line-height: 1.4;
+}
+
+.competitors-list h5 {
+  font-size: 12px;
+  margin: 0 0 8px 0;
+  color: #666;
+  font-weight: 600;
+}
+
+.competitor-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 0;
+  font-size: 12px;
+}
+
+.competitor-item span:first-child {
+  color: #666;
+}
+
+.competitor-item span:last-child {
+  font-weight: 600;
+  color: #4CAF50;
+}
+
+/* Scrollbar for panel */
+.fpa-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.fpa-content::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 3px;
+}
+
+.fpa-content::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 3px;
+}
+
+.fpa-content::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  #funpay-assistant-panel {
+    width: 280px;
+    top: 60px;
+    right: 10px;
+  }
+}
+
+/* Animation for panel appearance */
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+#funpay-assistant-panel {
+  animation: slideIn 0.3s ease-out;
+}
+
+/* Highlighting for new features on page */
+.fpa-highlight {
+  animation: highlightPulse 2s infinite;
+}
+
+@keyframes highlightPulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(102, 126, 234, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 10px rgba(102, 126, 234, 0);
+  }
+}
