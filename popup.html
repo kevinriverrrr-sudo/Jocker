@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FunPay Market Assistant</title>
+  <link rel="stylesheet" href="popup-styles.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>📊 FunPay Assistant</h1>
+      <p class="subtitle">Помощник для торговли на рынке</p>
+    </header>
+
+    <!-- Вкладки -->
+    <div class="tabs">
+      <button class="tab-button active" data-tab="stats">Статистика</button>
+      <button class="tab-button" data-tab="market">Рынок</button>
+      <button class="tab-button" data-tab="settings">Настройки</button>
+    </div>
+
+    <!-- Вкладка статистики -->
+    <div class="tab-content active" id="stats-tab">
+      <section class="stats-section">
+        <h2>📈 Общая статистика</h2>
+        
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-icon">📦</div>
+            <div class="stat-info">
+              <span class="stat-label">Всего заказов</span>
+              <span class="stat-value" id="total-orders">0</span>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon">💰</div>
+            <div class="stat-info">
+              <span class="stat-label">Общий доход</span>
+              <span class="stat-value" id="total-income">0 ₽</span>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon">📅</div>
+            <div class="stat-info">
+              <span class="stat-label">Сегодня заказов</span>
+              <span class="stat-value" id="today-orders">0</span>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon">💵</div>
+            <div class="stat-info">
+              <span class="stat-label">Доход сегодня</span>
+              <span class="stat-value" id="today-income">0 ₽</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="period-selector">
+          <label>Период:</label>
+          <select id="period-select">
+            <option value="today">Сегодня</option>
+            <option value="week">Неделя</option>
+            <option value="month">Месяц</option>
+            <option value="all">Всё время</option>
+          </select>
+        </div>
+
+        <div class="chart-container">
+          <h3>График продаж</h3>
+          <canvas id="sales-chart"></canvas>
+        </div>
+      </section>
+
+      <section class="recent-section">
+        <h2>🕒 Последние заказы</h2>
+        <div id="recent-orders" class="orders-list">
+          <p class="no-data">Нет данных о заказах</p>
+        </div>
+      </section>
+    </div>
+
+    <!-- Вкладка рынка -->
+    <div class="tab-content" id="market-tab">
+      <section class="market-section">
+        <h2>💹 Анализ рынка</h2>
+        
+        <div class="analysis-info">
+          <div class="info-card">
+            <h3>Последний анализ</h3>
+            <div id="last-analysis">
+              <p class="no-data">Анализ еще не проводился</p>
+            </div>
+          </div>
+
+          <button id="run-analysis" class="primary-button">
+            🔍 Провести анализ цен
+          </button>
+        </div>
+
+        <div class="market-stats" id="market-stats">
+          <!-- Заполняется динамически -->
+        </div>
+
+        <div class="competitors-section">
+          <h3>🏆 Топ конкурентов</h3>
+          <div id="competitors-list">
+            <p class="no-data">Нет данных о конкурентах</p>
+          </div>
+        </div>
+
+        <div class="price-recommendation">
+          <h3>💡 Рекомендации по ценам</h3>
+          <div id="price-recommendations">
+            <p>Откройте страницу товара на FunPay и проведите анализ для получения рекомендаций</p>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Вкладка настроек -->
+    <div class="tab-content" id="settings-tab">
+      <section class="settings-section">
+        <h2>⚙️ Настройки</h2>
+
+        <div class="setting-group">
+          <h3>🔔 Уведомления</h3>
+          <label class="checkbox-label">
+            <input type="checkbox" id="notify-orders" checked>
+            <span>Уведомлять о новых заказах</span>
+          </label>
+          <label class="checkbox-label">
+            <input type="checkbox" id="notify-messages" checked>
+            <span>Уведомлять о новых сообщениях</span>
+          </label>
+          <label class="checkbox-label">
+            <input type="checkbox" id="sound-notifications">
+            <span>Звуковые уведомления</span>
+          </label>
+        </div>
+
+        <div class="setting-group">
+          <h3>📊 Статистика</h3>
+          <label class="checkbox-label">
+            <input type="checkbox" id="auto-collect" checked>
+            <span>Автоматически собирать статистику</span>
+          </label>
+          <label class="checkbox-label">
+            <input type="checkbox" id="track-prices" checked>
+            <span>Отслеживать цены конкурентов</span>
+          </label>
+        </div>
+
+        <div class="setting-group">
+          <h3>🎨 Интерфейс</h3>
+          <label class="checkbox-label">
+            <input type="checkbox" id="show-panel" checked>
+            <span>Показывать панель на странице FunPay</span>
+          </label>
+          <label class="checkbox-label">
+            <input type="checkbox" id="dark-mode">
+            <span>Темная тема</span>
+          </label>
+        </div>
+
+        <div class="setting-group">
+          <h3>📈 Обновление данных</h3>
+          <label>
+            Частота обновления (сек):
+            <input type="number" id="update-interval" value="30" min="10" max="300">
+          </label>
+        </div>
+
+        <div class="buttons-group">
+          <button id="save-settings" class="primary-button">💾 Сохранить настройки</button>
+          <button id="reset-settings" class="secondary-button">🔄 Сбросить</button>
+          <button id="clear-data" class="danger-button">🗑️ Очистить данные</button>
+        </div>
+      </section>
+
+      <section class="info-section">
+        <h3>ℹ️ О расширении</h3>
+        <p><strong>Версия:</strong> 1.0.0</p>
+        <p><strong>Описание:</strong> Расширение для помощи в торговле на FunPay.com</p>
+        <p><strong>Функции:</strong></p>
+        <ul>
+          <li>📊 Сбор и анализ статистики продаж</li>
+          <li>🔔 Уведомления о новых заказах и сообщениях</li>
+          <li>💹 Анализ рынка и цен конкурентов</li>
+          <li>💡 Рекомендации по ценообразованию</li>
+          <li>📈 Графики продаж и доходов</li>
+        </ul>
+      </section>
+    </div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
